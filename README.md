@@ -33,6 +33,16 @@ Generates certificates for events, competitions, and workshops.
 * Optional QR code insertion
 * High-resolution PNG/PDF output
 
+### **4. Link Shortener**
+
+Internal link-shortening system for events, forms, and documents.
+**Features:**
+
+* Branded short links (`t.mindsinmotion.in/l/...`)
+* Basic click analytics
+* Editable and removable links
+* Optional password protection
+
 ### **3. QR Code Tool**
 
 Creates static or text-based QR codes for internal use.
@@ -40,17 +50,8 @@ Creates static or text-based QR codes for internal use.
 
 * URL/text input
 * Custom size and margin settings
+* Dynamic Links
 * PNG/SVG download options
-
-### **4. Link Shortener**
-
-Internal link-shortening system for events, forms, and documents.
-**Features:**
-
-* Branded short links (`tools.mindsinmotion.in/l/...`)
-* Basic click analytics
-* Editable and removable links
-* Optional password protection
 
 ### **5. Image / File Upload Tool**
 
@@ -69,5 +70,9 @@ A utility for uploading and sharing internal files.
 
 - Frontend: Browser-based interface (framework-agnostic)
 - Backend: Laravel (PHP)
-- Database: MySQL
+- Database: SQLite
 
+## **Requirements**
+
+- Most file management will be done on the client browser
+- 
