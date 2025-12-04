@@ -1,6 +1,47 @@
 <IfModule mod_rewrite.c>
+
+    ##################################################################
+    # SECURITY: Block access to .env and sensitive environment files #
+    ##################################################################
+    <FilesMatch "^\.env">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+    <FilesMatch "\.(env|log|config|json|lock|md|gitignore|git|env.example)$">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+
+    ##################################################################
+    # SECURITY: Block Laravel internal folders from web access       #
+    ##################################################################
+    RedirectMatch 404 ^/(app|bootstrap|config|database|resources|routes|storage|tests|vendor)/(.*)$
+
+    ##################################################################
+    # SECURITY: Block access to PHP files inside storage, database   #
+    ##################################################################
+    <Directory "/storage">
+        Order deny,allow
+        Deny from all
+    </Directory>
+
+    <Directory "/database">
+        Order deny,allow
+        Deny from all
+    </Directory>
+
+    ##################################################################
+    # SECURITY: Prevent directory listing                            #
+    ##################################################################
+    Options -Indexes
+
+    ##################################################################
+    # Your existing Laravel rewrite rules                            #
+    ##################################################################
+
     <IfModule mod_negotiation.c>
-        Options -MultiViews -Indexes
+        Options -MultiViews
     </IfModule>
 
     RewriteEngine On
@@ -22,4 +63,5 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
 </IfModule>
