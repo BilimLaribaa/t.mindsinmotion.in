@@ -129,6 +129,7 @@
                 </footer>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="{{url('/template/downloadlinks/bootstrap.bundle.min.js')}}" crossorigin="anonymous"></script>
         <script src="{{url('/template/js/scripts.js')}}"></script>
         <!-- <script src="{{url('/template/downloadlinks/Chart.min.js')}}" crossorigin="anonymous"></script> -->
