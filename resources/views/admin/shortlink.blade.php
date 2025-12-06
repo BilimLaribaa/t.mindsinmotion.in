@@ -17,7 +17,8 @@
 
             <div class="card-body">
 
-                <form id="shortlinkForm" onsubmit="createOrUpdate(event)">
+                <!-- Removed onsubmit -->
+                <form id="shortlinkForm">
                     @csrf
                     <input type="hidden" id="link_id">
 
@@ -28,7 +29,9 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" id="formSubmit">
+                    <!-- Button triggers JS manually -->
+                    <button type="button" class="btn btn-primary" id="formSubmit"
+                        onclick="createOrUpdate(event)">
                         Create Short Link
                     </button>
                 </form>
@@ -85,6 +88,7 @@
                                     onclick="deleteLink({{ $link->id }})">
                                     Delete
                                 </button>
+                                <button class="btn btn-sm btn-info" onclick="generateQr('{{ url('/l/'.$link->code) }}')">Generate QR</button>
                             </td>
 
                         </tr>
@@ -106,6 +110,10 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+function generateQr(shortUrl) {
+    window.location.href = '/admin/qr?url=' + encodeURIComponent(shortUrl);
+}
+
 
 // ✔ CREATE or UPDATE Short Link
 function createOrUpdate(e) {
